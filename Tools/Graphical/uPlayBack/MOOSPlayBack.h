@@ -34,7 +34,7 @@
 #if !defined(AFX_MOOSPLAYBACK_H__326FF11A_6E11_425E_8626_C016072CF8CC__INCLUDED_)
 #define AFX_MOOSPLAYBACK_H__326FF11A_6E11_425E_8626_C016072CF8CC__INCLUDED_
 
-#include <MOOSGenLib/MOOSGenLib.h>
+#include <Utils/enLib.h>
 #include <MOOSLIB/MOOSLib.h>
 
 using namespace std;

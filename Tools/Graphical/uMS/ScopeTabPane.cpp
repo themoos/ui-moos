@@ -48,7 +48,7 @@
 #include <string>
 #include "ScopeTabPane.h"
 #include <FL/Fl_Tabs.H>
-#include <MOOSGenLib/MOOSGenLibGlobalHelper.h>
+#include <Utils/enLibGlobalHelper.h>
 
 #define FONT_SIZE 11
 
