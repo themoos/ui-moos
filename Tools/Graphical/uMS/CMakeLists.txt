@@ -1,4 +1,4 @@
-PROJECT(uMS)
+
 
 # next few lines are simply to insert icons into
 # the console application on windows

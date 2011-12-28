@@ -1,4 +1,4 @@
-PROJECT(uPoke)
+
 
 #what files are needed?
 SET(SRCS 	

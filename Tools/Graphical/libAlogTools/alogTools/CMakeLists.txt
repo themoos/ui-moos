@@ -1,4 +1,4 @@
-project(alogToolsLib)
+
 
 set( sources
     indexedAlogReader.cpp

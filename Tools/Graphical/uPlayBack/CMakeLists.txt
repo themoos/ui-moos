@@ -9,7 +9,7 @@ if(COMMAND cmake_policy)
       cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
 
-PROJECT(uPlayBack)
+P
 
 #build a list of files to compile
 SET(UPLAYBACK_SRCS 

@@ -1,4 +1,4 @@
-project(alogToolsBin)
+
 
 include_directories(${alogTools_INCLUDE_DIRS})
 
