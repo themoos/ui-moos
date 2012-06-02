@@ -46,7 +46,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include <MOOSLIB/MOOSLib.h>
+#include "MOOS/libMOOS/MOOSLib.h"
 #include <string>
 #include <map>
 #include <vector>

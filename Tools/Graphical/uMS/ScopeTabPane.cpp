@@ -48,7 +48,7 @@
 #include <string>
 #include "ScopeTabPane.h"
 #include <FL/Fl_Tabs.H>
-#include <Utils/enLibGlobalHelper.h>
+#include "MOOS/libMOOS/Utils/MOOSUtilityFunctions.h"
 
 #define FONT_SIZE 11
 
@@ -406,6 +406,7 @@ bool CScopeTabPane::GetDBSummary()
     else
     {
         MOOSMSG_LIST InMail;
+        double dfT= MOOSTime();
         if(m_Comms.ServerRequest("ALL",InMail))
         {
             return m_DBImage.Set(InMail);

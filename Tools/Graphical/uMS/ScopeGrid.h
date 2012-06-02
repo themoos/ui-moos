@@ -43,7 +43,7 @@
 #include <FLTKVW/Flv_Table.H>
 #include <FL/Fl_Menu_Window.H>
 #include "DBImage.h"
-#include <MOOSLIB/MOOSCommClient.h>
+#include "MOOS/libMOOS/Comms/MOOSCommClient.h"
 
 
 

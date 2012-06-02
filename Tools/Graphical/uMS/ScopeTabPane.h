@@ -63,8 +63,8 @@
 #include "DBImage.h"
 #include <vector>
 #include <map>
-#include <MOOSLIB/MOOSLib.h>
-#include <MOOSUtilityLib/MOOSThread.h>
+#include "MOOS/libMOOS/MOOSLib.h"
+#include "MOOS/libMOOS/Utils/MOOSThread.h"
 
 
 

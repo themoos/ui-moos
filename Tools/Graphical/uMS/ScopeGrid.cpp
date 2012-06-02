@@ -37,7 +37,7 @@
 #include <string>
 #include "ScopeGrid.h"
 #include <FL/fl_draw.H>
-#include <Utils/enLibGlobalHelper.h>
+#include "MOOS/libMOOS/Utils/MOOSUtilityFunctions.h"
 #include <FLTKVW/MOOSFLTKUI.h>
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Menu_Button.H>
