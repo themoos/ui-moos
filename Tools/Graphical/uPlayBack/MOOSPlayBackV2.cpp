@@ -135,7 +135,6 @@ bool CMOOSPlayBackV2::Iterate(MOOSMSG_LIST &Output)
     if(IsEOF())
         return false;
 
-    double dfStartTime = m_dfLastMessageTime+1e-6;
     double dfStopTime = m_dfLastMessageTime+m_dfTickTime;
     
     bool bDone = false;
@@ -379,7 +378,6 @@ double CMOOSPlayBackV2::GetLastMessageTime()
 bool CMOOSPlayBackV2::SetLastTimeProcessed(double dfTime)
 {
     m_dfLastClientProcessedTime = dfTime;
-    double diff = MOOSTime() - dfTime;
     return true;
 }
 

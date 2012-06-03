@@ -34,8 +34,8 @@
 #if !defined(AFX_MOOSPLAYBACK_H__326FF11A_6E11_425E_8626_C016072CF8CC__INCLUDED_)
 #define AFX_MOOSPLAYBACK_H__326FF11A_6E11_425E_8626_C016072CF8CC__INCLUDED_
 
-#include <Utils/enLib.h>
-#include <MOOSLIB/MOOSLib.h>
+#include "MOOS/libMOOS/Utils/MOOSUtilityFunctions.h"
+#include "MOOS/libMOOS/MOOSLib.h"
 
 using namespace std;
 
@@ -45,7 +45,7 @@ using namespace std;
 #include <fstream>
 #include <set>
 
-#include <MOOSUtilityLib/MOOSMemoryMapped.h>
+#include "MOOS/libMOOS/Utils/MOOSMemoryMapped.h"
 
 typedef set<string> STRING_SET;
 class CMOOSPlayBackV2  

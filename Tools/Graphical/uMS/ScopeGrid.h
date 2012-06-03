@@ -40,7 +40,7 @@
 #include <string>
 #include <cstring>
 #include <FL/fl_draw.H>
-#include <FLTKVW/Flv_Table.H>
+#include "MOOS/libFLTKVW/Flv_Table.H"
 #include <FL/Fl_Menu_Window.H>
 #include "DBImage.h"
 #include "MOOS/libMOOS/Comms/MOOSCommClient.h"

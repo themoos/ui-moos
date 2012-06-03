@@ -78,7 +78,6 @@ CScopeTabPane::CScopeTabPane( int X, int Y, int W, int H,  char *l ) :BASE(X,Y,W
     int LHS = X+10;
     int TOP = Y+10;
     int RHS = X+W-10;
-    int BOTTOM = Y+H;
     int GRID_H =  (2*H)/3;
     int BOTTOM_GRID = TOP+GRID_H;
     int PROC_W = int(0.22*W);
@@ -396,7 +395,6 @@ void CScopeTabPane::OnTimer()
     }
 }
 
-
 bool CScopeTabPane::GetDBSummary()
 {
     if(!m_Comms.IsConnected())
@@ -406,7 +404,6 @@ bool CScopeTabPane::GetDBSummary()
     else
     {
         MOOSMSG_LIST InMail;
-        double dfT= MOOSTime();
         if(m_Comms.ServerRequest("ALL",InMail))
         {
             return m_DBImage.Set(InMail);

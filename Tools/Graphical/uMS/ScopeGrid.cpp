@@ -38,7 +38,7 @@
 #include "ScopeGrid.h"
 #include <FL/fl_draw.H>
 #include "MOOS/libMOOS/Utils/MOOSUtilityFunctions.h"
-#include <FLTKVW/MOOSFLTKUI.h>
+#include "MOOS/libFLTKVW/MOOSFLTKUI.h"
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Menu_Button.H>
 #include <FL/Fl_Button.H>
@@ -376,7 +376,7 @@ void CScopeGrid::draw_cell( int Offset, int &X, int &Y, int &W, int &H, int R, i
     {
         //this is the header:
         const char * ColumnNames[] = {"Name","Time","Type","Freq","Source","Community","Value"};
-        const char * pStr = C<sizeof(ColumnNames) ? ColumnNames[C] : "";
+        const char * pStr = C<(int)sizeof(ColumnNames) ? ColumnNames[C] : "";
         fl_draw(pStr, X-Offset, Y, W, H, s.align() );
     }
     else

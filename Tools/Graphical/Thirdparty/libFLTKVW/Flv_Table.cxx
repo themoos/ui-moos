@@ -36,7 +36,7 @@
 //	======================================================================
 
 
-#include "FLTKVW/Flv_Table.H"
+#include "MOOS/libFLTKVW/Flv_Table.H"
 #include <FL/Enumerations.H>
 #include <FL/fl_draw.H>
 #include <stdio.h>

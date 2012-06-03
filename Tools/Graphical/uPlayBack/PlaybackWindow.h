@@ -38,7 +38,7 @@
 
 #include <FL/Fl.H>
 #include <FL/Fl_Group.H>
-#include <FLTKVW/MOOSFLTKUI.h>
+#include "MOOS/libFLTKVW/MOOSFLTKUI.h"
 #include <FL/Fl_Check_Browser.H>
 
 class CPlaybackWindow : public CMOOSFLTKUI

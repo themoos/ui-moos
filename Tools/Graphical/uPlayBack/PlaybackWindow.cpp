@@ -32,7 +32,7 @@
 #pragma warning(disable: 4503)
 #endif
 
-#include <MOOSLIB/MOOSLib.h>
+#include "MOOS/libMOOS/MOOSLib.h"
 
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Clock.H>
@@ -42,7 +42,7 @@
 #include <FL/Fl_Preferences.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
-#include <FLTKVW/FLTKCheckList.h>
+#include "MOOS/libFLTKVW/FLTKCheckList.h"
 #include <string>
 #include "PlaybackWindow.h"
 
@@ -375,7 +375,6 @@ bool CPlaybackWindow::OnFile()
 
         Fl::wait();
 
-
         if(m_PlayBack.Initialise(pFile))
         {
             m_sFileName = std::string(pFile);
@@ -383,7 +382,6 @@ bool CPlaybackWindow::OnFile()
 
             STRING_SET Sources = m_PlayBack.GetSources();
             STRING_SET::iterator p;
-            int i =0;
             for(p = Sources.begin();p!= Sources.end();p++)
             {
                 pSourceCheck->add(p->c_str(),1);

@@ -47,7 +47,7 @@
 #include <FL/Fl_Preferences.H>
 #include <sstream>
 #include "ScopeTabPane.h"
-#include <FLTKVW/Flv_Table.H>
+#include "MOOS/libFLTKVW/Flv_Table.H"
 
 #define DEFAULT_HEIGHT 460
 #define DEFAULT_WIDTH 820
@@ -171,7 +171,7 @@ int main(int argc, char* argv[])
     }
     if(pTab->children()==0)
     {
-        Fl_Group *pG  = MakeCommunityPane(10,30,800,390,"Unnamed");             
+        MakeCommunityPane(10,30,800,390,"Unnamed");
     }
     
     w->end();

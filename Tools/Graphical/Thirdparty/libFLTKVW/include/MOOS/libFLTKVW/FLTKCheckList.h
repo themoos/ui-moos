@@ -42,7 +42,6 @@ public:
         if(why_event()==FLVE_CLICKED)
         {
             //this is a double click
-            int c = select_start_col();
             int r = select_start_row();
             m_Data[r].second = !m_Data[r].second;
         }

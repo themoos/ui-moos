@@ -12,7 +12,7 @@
 //	======================================================================
 
 #include <FL/Fl_Widget.H>
-#include "FLTKVW/Flv_Style.H"
+#include "MOOS/libFLTKVW/Flv_Style.H"
 #include <stdio.h>
 #ifdef WIN32
 #include <memory.h>
