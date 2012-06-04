@@ -1,4 +1,4 @@
-#include "indexedAlogReader.h"
+#include "MOOS/libAlogTools/indexedAlogReader.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 indexedAlogReader::indexedAlogReader() :

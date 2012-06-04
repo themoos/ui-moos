@@ -5,9 +5,9 @@
 #include <sstream>
 #include <algorithm>
 
-#include "FileNotFoundException.h"
-#include "recordTypes.h"
-#include "indexWriter.h"
+#include "MOOS/libAlogTools/FileNotFoundException.h"
+#include "MOOS/libAlogTools/recordTypes.h"
+#include "MOOS/libAlogTools/indexWriter.h"
 
 using namespace std;
 

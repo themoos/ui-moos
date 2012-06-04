@@ -1,9 +1,12 @@
 
+set(EXEC  alogIndexWriter)
 
-include_directories(${alogTools_INCLUDE_DIRS})
 
-#add_executable(readIndexedAlog readIndexedAlog.cpp)
-#target_link_libraries(readIndexedAlog ${alogTools_LIBRARIES})
 
-add_executable(alogIndexWriter idxWriter.cpp)
-target_link_libraries(alogIndexWriter ${alogTools_LIBRARIES})
+INCLUDE_DIRECTORIES(${alogTools_DEPEND_INCLUDE_DIRS} ${alogTools_INCLUDE_DIRS} ${MOOS_INCLUDE_DIRS} ${MOOS_DEPEND_INCLUDE_DIRS})
+
+  
+ADD_EXECUTABLE( ${EXEC}  idxWriter.cpp)
+
+# Link the executable
+TARGET_LINK_LIBRARIES(  ${EXEC} ${MOOS_LIBRARIES} ${MOOS_DEPEND_LIBRARIES} ${alogTools_LIBRARIES} ${alogTools_DEPEND_LIBRARIES}  )

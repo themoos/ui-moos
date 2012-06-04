@@ -9,14 +9,14 @@ if(COMMAND cmake_policy)
       cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
 
+set (EXEC uIndexedPlayback)
 
-SET(UPLAYBACK_SRCS 
+SET(SOURCES 
     uPlayBackMain.cpp
     PlaybackWindow.cpp
     PlaybackWindow.h
     MOOSPlayBackIndex.h
     MOOSPlayBackIndex.cpp
-
     ALogIndexWrapper.cpp
 )
 
@@ -27,28 +27,15 @@ FIND_PACKAGE( FLTK REQUIRED )
 FIND_PACKAGE( OpenGL REQUIRED )
 
 IF(FLTK_FOUND)
-    INCLUDE_DIRECTORIES(${FLTK_INCLUDE_DIR} ${alogTools_INCLUDE_DIRS})
+
+
+    INCLUDE_DIRECTORIES(${fltkvw_DEPEND_INCLUDE_DIRS} ${fltkvw_INCLUDE_DIRS} ${alogTools_DEPEND_INCLUDE_DIRS} ${alogTools_INCLUDE_DIRS} ${MOOS_INCLUDE_DIRS} ${MOOS_DEPEND_INCLUDE_DIRS})
     
-    LINK_DIRECTORIES(${CMAKE_LIBRARY_PATH})
+    ADD_EXECUTABLE( ${EXEC} WIN32 MACOSX_BUNDLE ${SOURCES})   
+   
+    TARGET_LINK_LIBRARIES(${EXEC} ${MOOS_LIBRARIES} ${MOOS_DEPEND_LIBRARIES} ${fltkvw_LIBRARIES} ${alogTools_LIBRARIES} ${alogTools_DEPEND_LIBRARIES} ${fltkvw_DEPEND_LIBRARIES}  )
 
-    # Add executable
-    #(note the WIN32 bit says under windows use /subsystem:windows not console
-    #this prevents fltk app from producing an annoying console aswell
-    #ADD_EXECUTABLE( uPlayBack WIN32 ${UPLAYBACK_SRCS})   
-    # However, this does not work under windows in release mode
-    if( APPLE )
-        ADD_EXECUTABLE( uPlayBackIndex MACOSX_BUNDLE ${UPLAYBACK_SRCS})   
-    else( APPLE )
-        ADD_EXECUTABLE( uPlayBackIndex ${UPLAYBACK_SRCS})   
-    endif( APPLE )
-
-    TARGET_LINK_LIBRARIES(uPlayBackIndex ${MOOS_LIBRARIES} ${PLATFORM_LIBS}  fltkvw ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES} ${alogTools_LIBRARIES} )
-
-    INSTALL(TARGETS uPlayBackIndex
-            RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-            BUNDLE DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-           ) 
-
+ 
 ELSE(FLTK_FOUND)
-    MESSAGE("uPlayBackIndex won't be built as FLTK was not found.")
+   MESSAGE("${EXEC} won't be built as FLTK was not found.")
 ENDIF(FLTK_FOUND)

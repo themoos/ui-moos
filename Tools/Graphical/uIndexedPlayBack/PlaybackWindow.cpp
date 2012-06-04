@@ -32,7 +32,7 @@
 #pragma warning(disable: 4503)
 #endif
 
-#include <MOOSLIB/MOOSLib.h>
+#include "MOOS/libMOOS/MOOSLib.h"
 
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Clock.H>
@@ -42,11 +42,11 @@
 #include <FL/Fl_Preferences.H>
 #include <FL/filename.H>
 #include <FL/fl_ask.H>
-#include <FLTKVW/FLTKCheckList.h>
+#include "MOOS/libFLTKVW/FLTKCheckList.h"
 #include <string>
 #include "PlaybackWindow.h"
 
-#include <alogTools/indexWriter.h>
+#include "MOOS/libalogTools/indexWriter.h"
 
 #define DEFAULT_COMMS_TICK 40
 #define DEFAULT_TIMER_INTERVAL 0.01
@@ -386,7 +386,6 @@ bool CPlaybackWindow::OnFile()
 
                 STRING_SET Sources = m_PlayBack.GetSources();
                 STRING_SET::iterator p;
-                int i =0;
                 for(p = Sources.begin();p!= Sources.end();p++)
                 {
                     pSourceCheck->add(p->c_str(),1);

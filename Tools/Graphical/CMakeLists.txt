@@ -10,7 +10,6 @@ ENDIF(BUILD_UMS)
 SET(BUILD_UPB OFF CACHE BOOL "Build Playback Tool?")
 IF(BUILD_UPB)
     SET(GRAPHICAL_DIRS ${GRAPHICAL_DIRS}  uPlayBack)
-    INCLUDE_DIRECTORIES(${THIRDPARTY_DIR} )
 ENDIF(BUILD_UPB)
 
 
@@ -18,12 +17,7 @@ if ("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.7)
 
   SET(BUILD_UPBINDEXED OFF CACHE BOOL "Build Indexed Playback Tool?")
   IF(BUILD_UPBINDEXED)
-      INCLUDE_DIRECTORIES(${THIRDPARTY_DIR} )
-
-      set(alogTools_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/libAlogTools" )
-      set(alogTools_LIBRARIES alogTools)
-      add_subdirectory(libAlogTools)
-      
+      add_subdirectory(libAlogTools)      
       add_subdirectory(uIndexedPlayBack)
   ENDIF(BUILD_UPBINDEXED)
   

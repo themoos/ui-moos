@@ -1,6 +1,6 @@
-#include "recordTypes.h"
+#include "MOOS/libAlogTools/recordTypes.h"
 #include "utils.h"
-#include "VersionException.h"
+#include "MOOS/libAlogTools/VersionException.h"
 
 #include <string>
 #include <vector>

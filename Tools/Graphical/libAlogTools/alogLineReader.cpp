@@ -1,5 +1,5 @@
-#include "alogLineReader.h"
-#include "FileNotFoundException.h"
+#include "MOOS/libAlogTools/alogLineReader.h"
+#include "MOOS/libAlogTools/FileNotFoundException.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 alogLineReader::alogLineReader() : m_alogFileStream()

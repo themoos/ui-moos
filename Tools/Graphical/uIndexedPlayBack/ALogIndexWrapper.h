@@ -1,7 +1,7 @@
 #ifndef _ALogIndexWrapper_h_
 #define _ALogIndexWrapper_h_
 
-#include <alogTools/indexedAlogReader.h>
+#include "MOOS/libalogTools/indexedAlogReader.h"
 
 // wraps indexed alog reader so that uPlayBack can use this new
 // indexed class without any modifications

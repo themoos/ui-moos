@@ -1,33 +1,85 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+set(LIBNAME alogTools)
 
-# --------------------------------------------------------------
-# Indicate CMake 2.7 and above that we don't want to mix relative
-#  and absolute paths in linker lib lists.
-# Run "cmake --help-policy CMP0003" for more information.
-# --------------------------------------------------------------
-if(COMMAND cmake_policy)
-      cmake_policy(SET CMP0003 NEW)
-endif(COMMAND cmake_policy)
+set( SOURCES
+    indexedAlogReader.cpp
+    alogLineReader.cpp
+    indexReader.cpp
+    indexWriter.cpp
+    recordTypes.cpp
+    utils.cpp
+    FileNotFoundException.cpp
+    VersionException.cpp
+)
 
 
-#SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+##########################
+# Packages / Dependencies
+set(INCLUDE_ROOTS  
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+    
+set(${LIBNAME}_DEPEND_INCLUDE_DIRS
+    ${INCLUDE_ROOTS}
+    CACHE INTERNAL
+    "List of include dirs for the dependencies of ${LIBNAME}"    
+)
+list(REMOVE_DUPLICATES ${LIBNAME}_DEPEND_INCLUDE_DIRS)
 
-add_subdirectory(alogTools)
+if(UNIX)
+    set(DEPENDENCIES  )
+endif(UNIX)
+
+set(${LIBNAME}_DEPEND_LIBRARIES
+    ${DEPENDENCIES}
+    CACHE INTERNAL
+    "List of libraries which are dependencies of ${LIBNAME}"    
+)
+list(REMOVE_DUPLICATES ${LIBNAME}_DEPEND_LIBRARIES)
+
+
+#######################################
+# Export include and library locations
+# This is essentially boilerplate.  Shouldn't need to change it.
+
+set(${LIBNAME}_INCLUDE_DIRS
+    ${INCLUDE_ROOTS}
+    CACHE INTERNAL
+    "Where to find ${LIBNAME} include directories"
+)
+list(REMOVE_DUPLICATES ${LIBNAME}_INCLUDE_DIRS)
+
+set(${LIBNAME}_LIBRARIES
+    ${LIBNAME}
+    CACHE INTERNAL
+    "List of libraries needed to link ${LIBNAME} library"
+)
+list(REMOVE_DUPLICATES ${LIBNAME}_LIBRARIES)
+
+
+
+######################################
+#export the library
+cache_internal_append_unique(PROJECT_EXPORT_LIBS 
+    ${LIBNAME}
+)
+
+
+
+#######################################
+# Create the library
+# This is boilerplate.  Any extra libs you want to link should be in the '..._DEPEND_...'
+# variables
+include_directories(${${LIBNAME}_INCLUDE_DIRS} ${${LIBNAME}_DEPEND_INCLUDE_DIRS})
+add_library(${LIBNAME} ${SOURCES} ${PUBLIC_HEADERS})
+target_link_libraries(${LIBNAME} ${${LIBNAME}_DEPEND_LIBRARIES})
+
+#######################################
+# install headers
+install(DIRECTORY ${INCLUDE_ROOTS} DESTINATION ${CMAKE_INSTALL_PREFIX} FILES_MATCHING PATTERN "*.h")
+
+# install libraries
+install(TARGETS ${LIBNAME} DESTINATION lib)
+
+#oh and build some  helper applications
 add_subdirectory(bin)
 
-
-
-if (false)
-  #########################
-  # CONFIG SCRIPT CREATION
-  #########################
-
-  # Provide a cmake config script for the build directory
-  export(TARGETS alogTools FILE UsealogTools.cmake)
-  configure_file( "alogToolsConfig.cmake.in" "${PROJECT_BINARY_DIR}/alogToolsConfig.cmake" @ONLY )
-
-  # Stick build location in the central CMake user package registry, so that it may be easily found
-  if ("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.7)
-    export(PACKAGE alogTools)
-  endif()
-endif()

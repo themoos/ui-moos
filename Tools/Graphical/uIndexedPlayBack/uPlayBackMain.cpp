@@ -36,7 +36,7 @@
 #include <FL/fl_draw.H>
 #include <FL/Fl_Browser.H>
 #include <FL/Fl_Tabs.H>
-#include <FLTKVW/Flv_Table.H>
+//#include "MOOS/libFLTKVW/Flv_Table.H"
 #include <FL/Fl_Window.H>
 #include <FL/fl_draw.H>
 #include "PlaybackWindow.h"

@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include "alogTools/indexWriter.h"
+#include "MOOS/libAlogTools/indexWriter.h"
 
 using namespace std;
 
