@@ -65,15 +65,6 @@ set(${LIBNAME}_LIBRARIES
 list(REMOVE_DUPLICATES ${LIBNAME}_LIBRARIES)
 
 
-
-######################################
-#export the library
-cache_internal_append_unique(PROJECT_EXPORT_LIBS 
-    ${LIBNAME}
-)
-
-
-
 #######################################
 # Create the library
 # This is boilerplate.  Any extra libs you want to link should be in the '..._DEPEND_...'
@@ -82,10 +73,4 @@ include_directories(${${LIBNAME}_INCLUDE_DIRS} ${${LIBNAME}_DEPEND_INCLUDE_DIRS}
 add_library(${LIBNAME} ${SOURCES} ${PUBLIC_HEADERS})
 target_link_libraries(${LIBNAME} ${${LIBNAME}_DEPEND_LIBRARIES})
 
-#######################################
-# install headers
-install(DIRECTORY ${INCLUDE_ROOTS} DESTINATION ${CMAKE_INSTALL_PREFIX} FILES_MATCHING PATTERN "*.h")
-
-# install libraries
-install(TARGETS ${LIBNAME} DESTINATION lib)
 

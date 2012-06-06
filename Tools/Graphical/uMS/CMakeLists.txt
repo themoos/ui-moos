@@ -9,6 +9,8 @@ ENDIF(WIN32)
 #build a list of files to compile
 SET(UMS_SRCS ScopeGrid.cpp uMS.cpp ScopeTabPane.cpp DBImage.cpp ScopeGrid.h ScopeTabPane.h DBImage.h ${RESOURCES})
 
+FIND_PACKAGE(MOOS REQUIRED)
+
 #look for FLTK ourselves
 FIND_PACKAGE( FLTK REQUIRED )
 
