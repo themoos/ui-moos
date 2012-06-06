@@ -20,6 +20,9 @@ SET(SOURCES
     ALogIndexWrapper.cpp
 )
 
+#look for MOOS ourselves
+FIND_PACKAGE( MOOS REQUIRED )
+
 #look for FLTK ourselves
 FIND_PACKAGE( FLTK REQUIRED )
 
