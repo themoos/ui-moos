@@ -2,7 +2,7 @@
 
 
 
-#include <MOOSLIB/MOOSCommClient.h>
+#include "MOOS/libMOOS/Comms/MOOSCommClient.h"
 
 CMOOSCommClient theMOOS;
 

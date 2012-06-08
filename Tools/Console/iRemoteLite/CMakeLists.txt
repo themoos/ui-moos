@@ -1,10 +1,15 @@
-SET(EXEC uPoke)
+set(EXEC iRemoteLite)
 
-#what files are needed?
-SET(SRCS 	
-	main.cpp)
+# next few lines are simply to insert icons into
+# the console application on windows
+IF(WIN32)
+    SET(RESOURCES icon1.ico iRemote.rc)
+ENDIF(WIN32)
 
 FIND_PACKAGE(MOOS REQUIRED)
+
+#what files are needed?
+SET(SRCS MOOSRemoteLite.cpp  iRemoteLiteMain.cpp  ${RESOURCES})
 
 #where to look for help
 INCLUDE_DIRECTORIES( {MOOS_INCLUDE_DIRS} ${MOOS_DEPEND_INCLUDE_DIRS} )
