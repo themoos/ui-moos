@@ -6,7 +6,7 @@ IF(WIN32)
     SET(RESOURCES icon1.ico iRemote.rc)
 ENDIF(WIN32)
 
-FIND_PACKAGE(MOOS REQUIRED)
+FIND_PACKAGE(MOOS 10.0)
 
 #what files are needed?
 SET(SRCS MOOSRemoteLite.cpp  iRemoteLiteMain.cpp  ${RESOURCES})
