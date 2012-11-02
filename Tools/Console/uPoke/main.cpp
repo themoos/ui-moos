@@ -54,7 +54,7 @@ int main(int argc, char * argv[])
 
     std::string sServer = "localhost";
     int nPort = 9000;
-    std::string sName;
+    //std::string sName;
 
     std::vector<std::string> Arguments;
 
@@ -94,7 +94,9 @@ int main(int argc, char * argv[])
     }
 
 
-    theMOOS.Run(sServer.c_str(), nPort, theMOOS.GetLocalIPAddress().c_str(),40);
+    std::string sName = "uPoke["+theMOOS.GetLocalIPAddress()+"]";
+
+    theMOOS.Run(sServer.c_str(), nPort,sName.c_str() ,40);
 
     sName = Arguments[k++];
 
