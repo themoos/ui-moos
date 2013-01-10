@@ -263,9 +263,13 @@ bool CMOOSPlayBackIndex::MessageFromLine(const std::string & sLine,
     {
         Msg.m_dfVal = 0.0;
 
-        if (sData.find("<MOOS_BINARY>") != std::string::npos)
+        if (sData.find("<MOOS_BINARY>") != std::string::npos &&
+        		sData.find("</MOOS_BINARY>") != std::string::npos	)
         {
-            //Msg.MarkAsBinary();
+        	MOOSChomp(sData,"<MOOS_BINARY>");
+        	sData = MOOSChomp(sData,"</MOOS_BINARY>");
+
+        	//Msg.MarkAsBinary();
             long long nOffset;
             if (!MOOSValFromString(nOffset, sData, "Offset"))
                 return MOOSFail(
