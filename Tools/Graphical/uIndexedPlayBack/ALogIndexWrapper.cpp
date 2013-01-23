@@ -12,19 +12,15 @@ ALogIndexWrapper::~ALogIndexWrapper()
 { Close(); }
 
 ////////////////////////////////////////////////////////////////////////////////
-bool ALogIndexWrapper::Open(const std::string & sfName)
+void ALogIndexWrapper::Open(const std::string & sfName)
 {
-    if( m_ALog.Init( sfName ) == false )
-    {
-        //printf("Initialisation of indexedAlogReader failed. Ensure that the alog path is correct:\n \t'%s'\n\n and that the corresponding index file exists:\n \t'%s'\n\nIf not, you can build an index file:\n \talogIndexWriter /path/to/file.alog\n\n",sfName.c_str(),(sfName+".idx").c_str());
-        return false;
-    }
+    // This could throw, but we'll pass exceptions on
+    m_ALog.Init( sfName );
 
     m_sFileName = sfName;
     m_nLineCount = m_ALog.GetNumRecords();
 
     m_bInitialized = true;
-    return true;
 }
 
 

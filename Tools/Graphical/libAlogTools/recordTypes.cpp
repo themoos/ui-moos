@@ -1,6 +1,6 @@
 #include "utils.h"
 #include "MOOS/AlogTools/recordTypes.h"
-#include "MOOS/AlogTools/VersionException.h"
+#include "MOOS/AlogTools/exceptions.h"
 
 #include <string>
 #include <vector>
@@ -56,7 +56,7 @@ std::istream& operator>>(std::istream& is, idxHeader & header)
     if (header.version != FILE_FORMAT_VERSION)
     {
         is.seekg(streampos);
-        throw VersionException("Incorrect index file version.");
+        throw exceptions::IncorrectAlogIndexVersionException();
     }
 
     is.read((char*)(&header.recsBegin), sizeof(header.recsBegin));

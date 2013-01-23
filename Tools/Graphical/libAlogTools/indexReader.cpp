@@ -1,5 +1,5 @@
 #include "MOOS/AlogTools/indexReader.h"
-#include "MOOS/AlogTools/FileNotFoundException.h"
+#include "MOOS/AlogTools/exceptions.h"
 
 #include <vector>
 #include <string>
@@ -50,7 +50,7 @@ void indexReader::ReadIndexFile( std::string alogIndexFilename )
 
     if(!idxFileStream.is_open())
     {
-      throw FileNotFoundException(alogIndexFilename);
+      throw exceptions::CannotOpenFileForReadingException(alogIndexFilename);
     }
 
     // Read in index file's header

@@ -17,7 +17,10 @@ class ALogIndexWrapper
 
         ALogIndexWrapper();
         ~ALogIndexWrapper();
-        bool Open(const std::string & sfName);
+
+        // Throws CannotOpenFileForReadingException,
+        //        CannotOpenIndexFileForReadingException
+        void Open(const std::string & sfName);
         std::string GetFileName();
         bool IsOpen();
         void Close();

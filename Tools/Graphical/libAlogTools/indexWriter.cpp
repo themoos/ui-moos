@@ -5,7 +5,7 @@
 #include <sstream>
 #include <algorithm>
 
-#include "MOOS/AlogTools/FileNotFoundException.h"
+#include "MOOS/AlogTools/exceptions.h"
 #include "MOOS/AlogTools/recordTypes.h"
 #include "MOOS/AlogTools/indexWriter.h"
 
@@ -23,8 +23,7 @@ void indexWriter::writeIndexFile(string alogIndexName)
     ofstream outfile(alogIndexName.c_str());
     if (!outfile.is_open())
     {
-        // TODO: this is the wrong exception to throw!
-        throw FileNotFoundException();
+        throw exceptions::CannotOpenFileForWritingException(alogIndexName);
     }
 
     outfile << m_alogHeader;
@@ -57,7 +56,7 @@ void indexWriter::parseAlogFile(string alogFileName)
     ifstream myfile(alogFileName.c_str());
     if (!myfile.is_open())
     {
-        throw FileNotFoundException(alogFileName);
+        throw exceptions::CannotOpenFileForReadingException(alogFileName);
     }
 
     int numRecords = 0;

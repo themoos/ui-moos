@@ -17,7 +17,10 @@ class indexedAlogReader
         indexedAlogReader();
         ~indexedAlogReader();
 
-        bool Init( std::string alogFilename );
+        // Throws CannotOpenFileForReadingException,
+        //        CannotOpenIndexFileForReadingException
+        void Init( std::string alogFilename );
+
         void GetNextLine(std::string & line);
         void GetPrevLine(std::string & line);
         

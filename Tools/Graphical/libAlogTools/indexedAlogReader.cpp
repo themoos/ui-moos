@@ -1,4 +1,5 @@
 #include "MOOS/AlogTools/indexedAlogReader.h"
+#include "MOOS/AlogTools/exceptions.h"
 
 namespace MOOS {
 namespace AlogTools {
@@ -16,25 +17,22 @@ indexedAlogReader::~indexedAlogReader()
 {}
 
 ////////////////////////////////////////////////////////////////////////////////
-bool indexedAlogReader::Init( std::string alogFilename )
+void indexedAlogReader::Init( std::string alogFilename )
 {
+    // Throws exceptions::CannotOpenFileForReadingException, but we'll pass
+    // it on
+    m_alogLineReader.Open( alogFilename );
+
     std::string alogIndexFilename = alogFilename + ".idx";
 
     try
     {
-      m_indexReader.ReadIndexFile( alogIndexFilename );
+        m_indexReader.ReadIndexFile( alogIndexFilename );
     }
-    catch (...)
+    catch (exceptions::CannotOpenFileForReadingException& e)
     {
-      return false;
+        throw exceptions::CannotOpenIndexFileForReadingException(e.FileName());
     }
-      
-    if( m_alogLineReader.Open( alogFilename ) == false )
-    {
-        return false;
-    }
-
-    return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

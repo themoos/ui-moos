@@ -41,6 +41,8 @@ public:
     }
 
     friend std::ostream& operator<<(std::ostream& os, const idxHeader & header);
+
+    // Throws exceptions::IncorrectAlogIndexVersionException
     friend std::istream& operator>>(std::istream& is, idxHeader & header);
 
 public:

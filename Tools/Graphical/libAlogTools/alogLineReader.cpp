@@ -1,5 +1,5 @@
 #include "MOOS/AlogTools/alogLineReader.h"
-#include "MOOS/AlogTools/FileNotFoundException.h"
+#include "MOOS/AlogTools/exceptions.h"
 
 namespace MOOS {
 namespace AlogTools {
@@ -15,7 +15,7 @@ alogLineReader::~alogLineReader()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-bool alogLineReader::Open( std::string alogFilename )
+void alogLineReader::Open( std::string alogFilename )
 {
     if( m_alogFileStream.is_open() )
     {
@@ -25,10 +25,8 @@ bool alogLineReader::Open( std::string alogFilename )
     m_alogFileStream.open( alogFilename.c_str() );
     if(!m_alogFileStream.is_open())
     {
-        throw FileNotFoundException(alogFilename);
+        throw exceptions::CannotOpenFileForReadingException(alogFilename);
     }
-
-    return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

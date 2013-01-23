@@ -18,7 +18,8 @@ class alogLineReader
 
         std::ifstream  m_alogFileStream;
 
-        bool Open( std::string alogFilename );
+        // Throws: exceptions::CannotOpenFileForReadingException
+        void Open( std::string alogFilename );
         void Read( idxRec alogRec, std::string & line );
 };
 
