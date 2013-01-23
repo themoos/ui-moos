@@ -5,11 +5,14 @@
 #include <sstream>
 #include <algorithm>
 
-#include "MOOS/libAlogTools/FileNotFoundException.h"
-#include "MOOS/libAlogTools/recordTypes.h"
-#include "MOOS/libAlogTools/indexWriter.h"
+#include "MOOS/AlogTools/FileNotFoundException.h"
+#include "MOOS/AlogTools/recordTypes.h"
+#include "MOOS/AlogTools/indexWriter.h"
 
 using namespace std;
+
+namespace MOOS {
+namespace AlogTools {
 
 ////////////////////////////////////////////////////////////////////////////////
 void indexWriter::writeIndexFile(string alogIndexName)
@@ -36,10 +39,10 @@ void indexWriter::writeIndexFile(string alogIndexName)
     outfile << m_alogHeader;
     outfile.seekp(recOffset);
 
-    vector<aloglib::idxRec>::const_iterator it = m_alogRecords.begin();
+    vector<idxRec>::const_iterator it = m_alogRecords.begin();
     while (it != m_alogRecords.end())
     {
-        const aloglib::idxRec &aline = *it;
+        const idxRec &aline = *it;
         //printf("time: %f,  lBegin: %d,  lEnd: %d\n",aline.time,aline.lineBegin,aline.lineEnd);
         outfile << aline;
         ++it;
@@ -114,7 +117,7 @@ void indexWriter::parseAlogFile(string alogFileName)
 
             long int lineEnd = (long int) myfile.tellg();
 
-            aloglib::idxRec alogLine;
+            idxRec alogLine;
             alogLine.time = timeStamp;
             alogLine.lineBegin = lineBegin;
             alogLine.len = lineEnd - lineBegin;
@@ -130,3 +133,5 @@ void indexWriter::parseAlogFile(string alogFileName)
     m_alogHeader.numRecs = numRecords;
 }
 
+}  // namespace AlogTools
+}  // namespace MOOS

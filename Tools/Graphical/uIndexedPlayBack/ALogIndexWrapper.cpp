@@ -75,13 +75,13 @@ int ALogIndexWrapper::GetLineCount()
 ////////////////////////////////////////////////////////////////////////////////
 int ALogIndexWrapper::SeekToFindTime(double dfT)
 {
-    aloglib::idxRec seekRec;
+    MOOS::AlogTools::idxRec seekRec;
 
     // dfT is global time, shift to be relative to log start
     seekRec.time = dfT - m_ALog.GetStartTime();
 
-    std::vector<aloglib::idxRec> recs = m_ALog.GetRecordList();
-    std::vector<aloglib::idxRec>::iterator result;
+    std::vector<MOOS::AlogTools::idxRec> recs = m_ALog.GetRecordList();
+    std::vector<MOOS::AlogTools::idxRec>::iterator result;
 
     // find first record which does not compare < seekRec.time
     result = std::lower_bound( recs.begin(), recs.end(), seekRec );

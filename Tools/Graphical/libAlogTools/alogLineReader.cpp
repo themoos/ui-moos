@@ -1,5 +1,8 @@
-#include "MOOS/libAlogTools/alogLineReader.h"
-#include "MOOS/libAlogTools/FileNotFoundException.h"
+#include "MOOS/AlogTools/alogLineReader.h"
+#include "MOOS/AlogTools/FileNotFoundException.h"
+
+namespace MOOS {
+namespace AlogTools {
 
 ////////////////////////////////////////////////////////////////////////////////
 alogLineReader::alogLineReader() : m_alogFileStream()
@@ -29,10 +32,12 @@ bool alogLineReader::Open( std::string alogFilename )
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-void alogLineReader::Read( aloglib::idxRec alogRec, std::string &line )
+void alogLineReader::Read( idxRec alogRec, std::string &line )
 {
     m_alogFileStream.seekg( alogRec.lineBegin, std::ios_base::beg );
     
     std::getline (m_alogFileStream,line);
 }
 
+}  // namespace AlogTools
+}  // namespace MOOS

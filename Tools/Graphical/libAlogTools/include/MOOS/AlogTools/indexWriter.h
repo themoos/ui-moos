@@ -5,20 +5,26 @@
 
 #include "recordTypes.h"
 
+namespace MOOS {
+namespace AlogTools {
+
 class indexWriter
 {
     public:
         indexWriter() {}
 
-        aloglib::idxHeader m_alogHeader;
-        aloglib::idxMsgList m_alogMsgList;
-        aloglib::idxSrcList m_alogSrcList;
-        std::vector<aloglib::idxRec> m_alogRecords;
+        idxHeader m_alogHeader;
+        idxMsgList m_alogMsgList;
+        idxSrcList m_alogSrcList;
+        std::vector<idxRec> m_alogRecords;
 
 
         void parseAlogFile( std::string alogFileName );
         void writeIndexFile( std::string alogIndexName );
 };
+
+}  // namespace AlogTools
+}  // namespace MOOS
 
 #endif // _indexWriter_h_
 

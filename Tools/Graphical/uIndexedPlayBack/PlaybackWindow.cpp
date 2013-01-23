@@ -46,7 +46,7 @@
 #include <string>
 #include "PlaybackWindow.h"
 
-#include "MOOS/libalogTools/indexWriter.h"
+#include "MOOS/AlogTools/indexWriter.h"
 
 #define DEFAULT_COMMS_TICK 40
 #define DEFAULT_TIMER_INTERVAL 0.01
@@ -415,7 +415,7 @@ bool CPlaybackWindow::OnFile()
                     break;
                 else
                 {
-                    indexWriter idxWriter;
+                    MOOS::AlogTools::indexWriter idxWriter;
                     idxWriter.parseAlogFile(string(pFile));
                     idxWriter.writeIndexFile(string(pFile)+string(".idx"));
                 }

@@ -1,4 +1,8 @@
-#include "MOOS/libAlogTools/indexedAlogReader.h"
+#include "MOOS/AlogTools/indexedAlogReader.h"
+
+namespace MOOS {
+namespace AlogTools {
+
 
 ////////////////////////////////////////////////////////////////////////////////
 indexedAlogReader::indexedAlogReader() :
@@ -48,7 +52,7 @@ void indexedAlogReader::GetPrevLine(std::string & line)
 ////////////////////////////////////////////////////////////////////////////////
 void indexedAlogReader::GetLine( int lineNum, std::string & line)
 {
-    aloglib::idxRec curRec = m_indexReader.GetLineRecord( lineNum );
+    idxRec curRec = m_indexReader.GetLineRecord( lineNum );
     m_alogLineReader.Read( curRec, line );
 }
 
@@ -71,20 +75,22 @@ double indexedAlogReader::GetStartTime() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-const aloglib::idxMsgList& indexedAlogReader::GetMsgList() const
+const idxMsgList& indexedAlogReader::GetMsgList() const
 {
     return m_indexReader.GetMsgList();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-const aloglib::idxSrcList& indexedAlogReader::GetSrcList() const
+const idxSrcList& indexedAlogReader::GetSrcList() const
 {
     return m_indexReader.GetSrcList();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-const std::vector<aloglib::idxRec>& indexedAlogReader::GetRecordList() const
+const std::vector<idxRec>& indexedAlogReader::GetRecordList() const
 {
     return m_indexReader.GetRecordList();
 }
 
+}  // namespace AlogTools
+}  // namespace MOOS

@@ -4,6 +4,9 @@
 #include <stdexcept>
 #include <string>
 
+namespace MOOS {
+namespace AlogTools {
+
 class FileNotFoundException : public std::runtime_error {
   FileNotFoundException& operator = (const FileNotFoundException &other);
 
@@ -14,5 +17,8 @@ public:
 protected:
 
 };
+
+}  // namespace AlogTools
+}  // namespace MOOS
 
 #endif // FileNotFoundException_H

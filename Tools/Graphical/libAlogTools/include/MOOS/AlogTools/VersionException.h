@@ -4,6 +4,9 @@
 #include <stdexcept>
 #include <string>
 
+namespace MOOS {
+namespace AlogTools {
+
 class VersionException : public std::runtime_error {
   VersionException& operator = (const VersionException &other);
 
@@ -14,5 +17,8 @@ public:
 protected:
 
 };
+
+}  // namespace AlogTools
+}  // namespace MOOS
 
 #endif // VERSIONEXCEPTION_H
