@@ -6,6 +6,9 @@
 #include <vector>
 #include <string>
 
+namespace MOOS {
+namespace AlogTools {
+
 class indexReader
 {
     public:
@@ -16,23 +19,26 @@ class indexReader
 
         void ReadIndexFile( std::string alogIndexFilename );
         
-        const aloglib::idxRec& GetLineRecord( unsigned int lineNum ) const;
+        const idxRec& GetLineRecord( unsigned int lineNum ) const;
         void GetMsgTypes(std::vector<std::string> & msgTypes);
 
         double GetTime( int i ) const;
         double GetStartTime() const;
         int GetNumRecords() const;
-        const aloglib::idxMsgList& GetMsgList() const;
-        const aloglib::idxSrcList& GetSrcList() const;
-        const std::vector<aloglib::idxRec>& GetRecordList() const;
+        const idxMsgList& GetMsgList() const;
+        const idxSrcList& GetSrcList() const;
+        const std::vector<idxRec>& GetRecordList() const;
         
     private:
-        aloglib::idxHeader m_alogHeader;
-        aloglib::idxMsgList m_alogMsgList;
-        aloglib::idxSrcList m_alogSrcList;
-        std::vector<aloglib::idxRec> m_alogRecords;
+        idxHeader m_alogHeader;
+        idxMsgList m_alogMsgList;
+        idxSrcList m_alogSrcList;
+        std::vector<idxRec> m_alogRecords;
 
 };
+
+}  // namespace AlogTools
+}  // namespace MOOS
 
 #endif // _indexReader_h_
 
