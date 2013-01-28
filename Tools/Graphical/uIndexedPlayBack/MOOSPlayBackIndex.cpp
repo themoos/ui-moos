@@ -64,7 +64,7 @@ CMOOSPlayBackIndex::~CMOOSPlayBackIndex()
 
 }
 
-bool CMOOSPlayBackIndex::Initialise(const string &sFileName)
+void CMOOSPlayBackIndex::Initialise(const string &sFileName)
 {
     if (m_ALog.IsOpen())
         m_ALog.Close();
@@ -73,7 +73,8 @@ bool CMOOSPlayBackIndex::Initialise(const string &sFileName)
     m_dfLastClientProcessedTime = -1;
     m_sFileName = sFileName;
 
-    return m_ALog.Open(sFileName);
+    // This could throw
+    m_ALog.Open(sFileName);
 }
 
 bool CMOOSPlayBackIndex::IsOpen()

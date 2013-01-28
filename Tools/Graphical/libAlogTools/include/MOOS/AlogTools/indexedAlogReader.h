@@ -8,13 +8,19 @@
 #include "alogLineReader.h"
 #include "indexReader.h"
 
+namespace MOOS {
+namespace AlogTools {
+
 class indexedAlogReader
 {
     public:
         indexedAlogReader();
         ~indexedAlogReader();
 
-        bool Init( std::string alogFilename );
+        // Throws CannotOpenFileForReadingException,
+        //        CannotOpenIndexFileForReadingException
+        void Init( std::string alogFilename );
+
         void GetNextLine(std::string & line);
         void GetPrevLine(std::string & line);
         
@@ -23,14 +29,17 @@ class indexedAlogReader
         int GetNumRecords() const;
         double GetTime( int i ) const;
         double GetStartTime() const;
-        const aloglib::idxMsgList& GetMsgList() const;
-        const aloglib::idxSrcList& GetSrcList() const;
-        const std::vector<aloglib::idxRec>& GetRecordList() const;
+        const idxMsgList& GetMsgList() const;
+        const idxSrcList& GetSrcList() const;
+        const std::vector<idxRec>& GetRecordList() const;
 
         alogLineReader m_alogLineReader;
         indexReader m_indexReader;
         int m_CurrentLine;
 };
+
+}  // namespace AlogTools
+}  // namespace MOOS
 
 #endif // _indexedAlogReader_h_
 
