@@ -284,19 +284,22 @@ bool CMOOSPlayBackV2::MessageFromLine(const std::string & sLine, CMOOSMsg &Msg)
 
         if(sData.find("<MOOS_BINARY>") !=std::string::npos)
         {
+
+            std::string sOpenTag("<MOOS_BINARY>"), sCloseTag("</MOOS_BINARY>");
+            std::string sBinaryDataInfo = sData.substr(sData.find(sOpenTag)+sOpenTag.size(),sData.find(sCloseTag)-sData.find(sOpenTag)-sOpenTag.size());
             //Msg.MarkAsBinary();
-            long long nOffset;
-            if(!MOOSValFromString(nOffset,sData,"Offset"))
-                return MOOSFail("badly formed MOOS_BINARY indicator - missing \"Offset=xyz\"");
 
             std::string sFile;
-            if(!MOOSValFromString(sFile,sData,"File"))
+            if(!MOOSValFromString(sFile,sBinaryDataInfo,"File"))
                 return MOOSFail("badly formed MOOS_BINARY indicator - missing \"File=XYZ\"");
 
-            int nBytes;
-            if(!MOOSValFromString(nBytes,sData,"Bytes"))
-                return MOOSFail("badly formed MOOS_BINARY indicator - missing \"Bytes=xyz\"");
+            double nOffset;
+            if(!MOOSValFromString(nOffset,sBinaryDataInfo,"Offset"))
+                return MOOSFail("badly formed MOOS_BINARY indicator - missing \"Offset=xyz\"");
 
+            int nBytes;
+            if(!MOOSValFromString(nBytes,sBinaryDataInfo,"Bytes"))
+                return MOOSFail("badly formed MOOS_BINARY indicator - missing \"Bytes=xyz\"");
 
             //corner case of binary file changing half way through a log....(Why this might happen
             //I don't know but catch it anyway....
